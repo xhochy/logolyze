@@ -142,7 +142,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>emma-maven-plugin</artifactId>
-				<!--<version>1.0-alpha-3-SNAPSHOT</version> -->
+				<version>1.0-alpha-3</version>
 				<inherited>true</inherited>
 			</plugin>
 			<plugin>
@@ -164,10 +164,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.8</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.2</version>
 			</plugin>
 		</plugins>
 	</reporting>
@@ -189,6 +191,7 @@
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
+				<version>2.3.2</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
