@@ -1,0 +1,199 @@
+tables:
+  META_CUBE:
+    CUBE_ID: integer
+    CUBE_NAME: varchar
+    DIRECTED_GRAPH: integer
+  META_DIMENSION:
+    DIMENSION_ID: integer
+    FK_CUBE: integer
+    DIMENSION_TYPE: varchar
+    DIMENSION_NAME: varchar
+  META_MEASURE:
+    FK_CUBE: integer
+    FACT_TABLE: varchar
+    MEASURE_NAME: varchar
+    FACT_TABLE_COLUMN: varchar
+  META_HIERARCHY:
+    HIERARCHY_ID: integer
+    FK_DIMENSION: integer
+    HIERARCHY_NAME: varchar
+    HIERARCHY_TABLE: varchar
+    GRAPH_COLUMN_HIERARCHY: varchar
+    GRAPH_COLUMN_HIERARCHYVALUE: varchar
+  META_HIERARCHYLEVEL:
+    FK_HIERARCHY: integer
+    HIERARCHY_LEVEL: integer
+    HIERARCHYLEVEL_NAME: varchar
+  META_H_GEO1:
+    KEY: integer
+    ZIPCODE: varchar
+    ADDRESS: varchar
+  META_H_TIMES1:
+    KEY: integer
+    DAY: varchar
+    MONTH: varchar
+  GRAPH:
+    G_ID: varchar
+    TOPOLOGY_ID: integer
+    GEOGRAPHY: varchar
+    TIMES: varchar
+    TIMES_VALUE: varchar
+  EDGE:
+    G_ID: varchar
+    E_ID: integer
+    N1_ID: integer
+    N2_ID: integer
+    CARGO_AVG: integer
+    CARGO_MIN: integer
+    REMARK: varchar
+  NODE:
+    N_ID: integer
+    TOPOLOGY_ID: integer
+    LABEL: varchar
+    STORAGE_CAPACITY: integer
+    CATEGORY: varchar
+data:
+  META_CUBE:
+    - CUBE_ID: 1
+      CUBE_NAME: logolyze
+      DIRECTED_GRAPH: 1
+  META_DIMENSION:
+    - DIMENSION_ID: 1 
+      FK_CUBE: 1
+      DIMENSION_TYPE: topological
+      DIMENSION_NAME: GEOGRAPHY
+    - DIMENSION_ID: 3 
+      FK_CUBE: 1
+      DIMENSION_TYPE: informational
+      DIMENSION_NAME: TIMES
+  META_HIERARCHY:
+    - HIERARCHY_ID: 1
+      FK_DIMENSION: 3
+      HIERARCHY_TABLE: META_H_TIMES1
+      HIERARCHY_NAME: TIMES
+      GRAPH_COLUMN_HIERARCHY: TIMES
+      GRAPH_COLUMN_HIERARCHYVALUE: TIMES_VALUE
+    - HIERARCHY_ID: 4
+      FK_DIMENSION: 1
+      HIERARCHY_NAME: GEOGRAPHY
+      HIERARCHY_TABLE: META_H_GEO1
+      GRAPH_COLUMN_HIERARCHY: GEOGRAPHY
+  META_HIERARCHYLEVEL:
+    - FK_HIERARCHY: 1
+      HIERARCHY_LEVEL: 0
+      HIERARCHYLEVEL_NAME: DAY
+    - FK_HIERARCHY: 1
+      HIERARCHY_LEVEL: 1
+      HIERARCHYLEVEL_NAME: MONTH
+    - FK_HIERARCHY: 4
+      HIERARCHY_LEVEL: 0
+      HIERARCHYLEVEL_NAME: ADDRESS 
+    - FK_HIERARCHY: 4
+      HIERARCHY_LEVEL: 1
+      HIERARCHYLEVEL_NAME: ZIPCODE
+  META_H_GEO1:
+    - KEY: 20
+      ZIPCODE: 76131 
+      ADDRESS: HaDiKo
+    - KEY: 30
+      ZIPCODE: 76133 
+      ADDRESS: Entropia
+    - KEY: 21
+      ZIPCODE: 76131 
+    - KEY: 31
+      ZIPCODE: 76133 
+  META_H_TIMES1:
+    - KEY: 50
+      DAY: "2010-05-01"
+      MONTH: "2010-05"
+    - KEY: 60
+      DAY: "2010-06-02"
+      MONTH: "2010-06"
+    - KEY: 51
+      DAY: "2010-05-01"
+    - KEY: 61
+      DAY: "2010-06-02"
+  META_MEASURE:
+    - FK_CUBE: 1
+      FACT_TABLE: EDGE
+      MEASURE_NAME: CARGO_AVG
+      FACT_TABLE_COLUMN: CARGO_AVG
+    - FK_CUBE: 1
+      FACT_TABLE: EDGE
+      MEASURE_NAME: CARGO_MIN
+      FACT_TABLE_COLUMN: CARGO_MIN
+    - FK_CUBE: 1
+      FACT_TABLE: NODE
+      MEASURE_NAME: STORAGE_CAPACITY
+      FACT_TABLE_COLUMN: STORAGE_CAPACITY
+    - FK_CUBE: 1
+      FACT_TABLE: NODE
+      MEASURE_NAME: CATEGORY
+      FACT_TABLE_COLUMN: CATEGORY
+    - FK_CUBE: 1
+      FACT_TABLE: EDGE
+      MEASURE_NAME: REMARK
+      FACT_TABLE_COLUMN: REMARK
+  GRAPH:
+    - G_ID: "1"
+      TOPOLOGY_ID: 1
+      GEOGRAPHY: "ADDRESS"
+      TIMES: "DAY"
+      TIMES_VALUE: "2010-05-01"
+  NODE:
+    - N_ID: 1
+      TOPOLOGY_ID: 1
+      LABEL: "HaDiKo"
+      STORAGE_CAPACITY: 100
+      CATEGORY: Menschenquelle
+    - N_ID: 2
+      TOPOLOGY_ID: 1
+      LABEL: "Infobau"
+      STORAGE_CAPACITY: 200
+      CATEGORY: høhere Lähranßtalt
+    - N_ID: 3
+      TOPOLOGY_ID: 1
+      LABEL: "Mensa"
+      STORAGE_CAPACITY: 300
+      CATEGORY: Omnomnom
+    - N_ID: 4
+      TOPOLOGY_ID: 1
+      LABEL: "Entropia"
+      STORAGE_CAPACITY: 23
+      CATEGORY: Menschensenke
+  EDGE:
+    - G_ID: "1"
+      E_ID: 1
+      N1_ID: 1
+      N2_ID: 2
+      CARGO_AVG: 42
+      CARGO_MIN: 5
+      REMARK: "Good morning, Hadiko"
+    - G_ID: "1"
+      E_ID: 2
+      N1_ID: 2
+      N2_ID: 3
+      CARGO_AVG: 196
+      CARGO_MIN: 27
+      REMARK: "Hungrige Nerds..."
+    - G_ID: "1"
+      E_ID: 3
+      N1_ID: 3
+      N2_ID: 4
+      CARGO_AVG: 7
+      CARGO_MIN: 1
+      REMARK: "Fnordwärts!"
+    - G_ID: "1"
+      E_ID: 4
+      N1_ID: 2
+      N2_ID: 4
+      CARGO_AVG: 64
+      CARGO_MIN: 32
+      REMARK: "Andi ist mit seinem Tut und auch sonst fertig"
+    - G_ID: "1"
+      E_ID: 5
+      N1_ID: 3
+      N2_ID: 1
+      CARGO_AVG: 74
+      CARGO_MIN: 18
+      REMARK: "Nach dem Essen ins Bett"

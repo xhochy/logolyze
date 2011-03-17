@@ -1,0 +1,34 @@
+tables:
+  META_CUBE:
+    CUBE_ID: integer
+    CUBE_NAME: varchar
+    DIRECTED_GRAPH: integer
+  META_DIMENSION:
+    DIMENSION_ID: integer
+    FK_CUBE: integer
+    DIMENSION_TYPE: varchar
+    DIMENSION_NAME: varchar
+  META_MEASURE:
+    FK_CUBE: integer
+    FACT_TABLE: varchar
+    MEASURE_NAME: varchar
+    FACT_TABLE_COLUMN: varchar
+  META_HIERARCHY:
+    HIERARCHY_ID: integer
+    FK_DIMENSION: integer
+    HIERARCHY_NAME: varchar
+    HIERARCHY_TABLE: varchar
+    GRAPH_COLUMN_HIERARCHY: varchar
+    GRAPH_COLUMN_HIERARCHYVALUE: varchar
+  META_HIERARCHYLEVEL:
+    FK_HIERARCHY: integer
+    HIERARCHY_LEVEL: integer
+    HIERARCHYLEVEL_NAME: varchar
+data:
+  META_CUBE:
+    - CUBE_ID: 1
+      CUBE_NAME: logolyze
+      DIRECTED_GRAPH: 1
+    - CUBE_ID: 2
+      CUBE_NAME: "jimmy's"
+      DIRECTED_GRAPH: 1
