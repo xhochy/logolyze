@@ -8,7 +8,7 @@ layout: nil
  <link href="http://logolyze.xhochy.com/atom.xml" rel="self"/>
  <link href="http://logolyze.xhochy.com/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://algo-tut.xhochy.com/</id>
+ <id>http://logolyze.xhochy.com/</id>
  <author>
    <name>Uwe L. Korn</name>
    <email>uwelk@xhochy.com</email>
