@@ -2,3 +2,5 @@
 .project
 .settings
 target
+*.log
+*.log.1
